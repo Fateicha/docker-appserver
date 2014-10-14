@@ -1,7 +1,6 @@
 
 #Docker appserver.io for Magento
 
-##Usage:
 ###Clone the repo <br />
 ```git clone https://github.com/DavidFeller/docker-magento-appserver.git```
 
