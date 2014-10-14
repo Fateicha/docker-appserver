@@ -1,5 +1,5 @@
 
-#Docker appserver.io Server for Magento
+#Docker appserver.io for Magento
 
 ##Usage:
 ###Clone the repo <br />
