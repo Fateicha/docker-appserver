@@ -6,7 +6,7 @@
 ```git clone https://github.com/DavidFeller/docker-magento-appserver.git```
 
 ### Build the image
-```make -t <image-name> . ```
+```docker build -t <image-name> . ```
 
 ### Run as a container:
 ```docker run -d --name <servername>  
