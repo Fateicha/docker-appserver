@@ -2,6 +2,8 @@
 
 set -e
 
+chown -R www-data:www-data /opt/appserver/webapps/html
+
 # Start Appserver
 /opt/appserver/bin/php -dappserver.php_sapi=appserver -dappserver.remove_functions=getenv,putenv /opt/appserver/server.php
 

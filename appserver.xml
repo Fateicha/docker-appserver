@@ -294,7 +294,7 @@
                     </connectionHandlers>
 
                     <authentications>
-                        <authentication uri="^\/schaufenster.*">
+                        <authentication uri="^\/admin.*">
                             <params>
                                 <param name="type" type="string">
                                     \TechDivision\WebServer\Authentication\BasicAuthentication
@@ -316,23 +316,23 @@
                             </params>
                         </access>
                     </accesses>
-		    <virtualHosts>
-                        <virtualHost name="magento.example.com">
+	            <virtualHosts>
+                        <virtualHost name="docker.browse-technology.com">
                             <params>
                                 <param name="admin" type="string">info@appserver.io</param>
-                                <param name="documentRoot" type="string">webapps/magento</param>
+                                <param name="documentRoot" type="string">webapps/html</param>
                             </params>
                             <rewrites>
                                 <rewrite condition="-d{OR}-f{OR}-l" target="" flag="L" />
                                 <rewrite condition="^/([^/]+/)?(.*){AND}!index\.php" target="/$1index.php/$2" flag="L" />
                             </rewrites>
-                            <accesses>
+                            <!--<accesses>
                                 <access type="allow">
                                     <params>
-                                        <param name="X_REQUEST_URI" type="string">^\/([^\/]+\/)?(opt|lib|pub|media|skin|js|index\.php).*</param>
+                                        <param name="X_REQUEST_URI" type="string">^\/([^\/]+\/)?(css|img|opt|lib|pub|media|skin|js|index\.php).*</param>
                                     </params>
                                 </access>
-                            </accesses>
+                            </accesses>-->
                             <locations>
                                 <location condition="~*\.php(\/|\?|$)">
                                     <fileHandlers>
@@ -444,7 +444,33 @@
                      ! Some examples to configuration your virtual host can be found at:
                      !
                      ! https://github.com/techdivision/TechDivision_AppserverDocumentation/blob/master/docs/components/servers/webserver/modules/vhostmodule.md
-                     -->
+	             -->
+		    <virtualHosts>
+                        <virtualHost name="docker.browse-technology.com">
+                            <params>
+                                <param name="admin" type="string">info@appserver.io</param>
+                                <param name="documentRoot" type="string">webapps/html</param>
+                            </params>
+                            <rewrites>
+                                <rewrite condition="-d{OR}-f{OR}-l" target="" flag="L" />
+                                <rewrite condition="^/([^/]+/)?(.*){AND}!index\.php" target="/$1index.php/$2" flag="L" />
+                            </rewrites>
+                            <!--<accesses>
+                                <access type="allow">
+                                    <params>
+                                        <param name="X_REQUEST_URI" type="string">^\/([^\/]+\/)?(css|img|opt|lib|pub|media|skin|js|index\.php).*</param>
+                                    </params>
+                                </access>
+                            </accesses>-->
+                            <locations>
+                                <location condition="~*\.php(\/|\?|$)">
+                                    <fileHandlers>
+                                        <fileHandler name="php" extension=".php" />
+                                    </fileHandlers>
+                                </location>
+                            </locations>
+                        </virtualHost>
+                    </virtualHosts>
 
                     <modules>
                         <!-- REQUEST_POST hook -->
