@@ -28,7 +28,7 @@ Als DocumentRoot kann ein lokales Verzeichnis, z.B. ```/var/www``` in ```/opt/ap
 Damit der Container von außen erreichbar ist, werden die Ports 9080 und 9443 "exposed".
 
 ##Start des Containers
-Da Docker nur bedingt mit Upstart-Skripten muss der Appserver beim Start des Containers mittels eines Bash-Skripts gestartet werden. Dazu wird beim Start des Containers die Datei ```init.sh``` eingebunden und ausgeführt.
+Da Docker nur bedingt mit Upstart-Skripten umgehen kann, muss der Appserver beim Start des Containers mittels eines Bash-Skripts gestartet werden. Dazu wird beim Start des Containers die Datei ```init.sh``` eingebunden und ausgeführt.
 
 ```docker run -d --name 'appserver' -p 9080:9080 -p 9443:9443 -v /var/www:/opt/appserver/webapps/html $USER/appserver```
 
