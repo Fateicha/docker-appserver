@@ -13,7 +13,7 @@ Wird Ubuntu 12.04 bzw. 14.04 als Host verwendet, sollten *nicht* die mitgeliefer
     sudo apt-get update
     sudo apt-get install lxc-docker
     
-Unter Fedora bzw. RHEL/CentOS kann es zu Problemen mit selinux kommen. Aus diesem Grund sollte man möglichst selinux mittels ```setenforce 0``` deaktiviert werden. Allerdings wird dies von RedHat auf Produktivsystemen ausdrücklich *nicht* empfohlen wird.
+Unter Fedora bzw. RHEL/CentOS kann es zu Problemen mit selinux kommen. Aus diesem Grund sollte man möglichst selinux mittels ```setenforce 0``` deaktiviert werden. Allerdings wird dies von RedHat auf Produktivsystemen ausdrücklich *nicht* empfohlen.
 
 ##Installation
 Aktuell befinden sich noch keine fertigen Images im DockerHub, sodass ein eigenes Image gebaut werden muss
