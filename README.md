@@ -18,7 +18,7 @@ Unter Fedora bzw. RHEL/CentOS kann es zu Problemen mit selinux kommen. Aus diese
 ##Installation
 Aktuell befinden sich noch keine fertigen Images im DockerHub, sodass ein eigenes Image gebaut werden muss
 
-    git glone https://github.com/DavidFeller/docker-appserver.git
+    git clone https://github.com/DavidFeller/docker-appserver.git
     cd docker-appserver
     docker build -t "$USER/appserver" .
 
