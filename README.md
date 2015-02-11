@@ -18,7 +18,7 @@ Unter Fedora bzw. RHEL/CentOS kann es zu Problemen mit selinux kommen. Aus diese
 ## Für Eilige... einfach los!
 Wer einfach nur einen Appserver-Container vom DockerHub ziehen und unverändert starten möchte, kann dies ganz wie folgt tun:
 
-	docker run -d 'appserver.io' -p 9080:9080 davidfeller/appserver.io
+	docker run -d --name 'appserver.io' -p 9080:9080 davidfeller/appserver.io
 
 ##<small>für alle anderen...</small> Installation und Bau des Containers
 Aktuell befinden sich noch keine fertigen Images im DockerHub, sodass ein eigenes Image gebaut werden muss
