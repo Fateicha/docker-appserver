@@ -11,8 +11,8 @@
         <param name="conf.dir" type="string">/etc/appserver</param>
         <param name="confd.dir" type="string">/etc/appserver/conf.d</param>
         -->
-        <param name="user" type="string">_www</param>
-        <param name="group" type="string">staff</param>
+        <param name="user" type="string">www-data</param>
+        <param name="group" type="string">www-data</param>
         <param name="umask" type="string">0002</param>
     </params>
 
