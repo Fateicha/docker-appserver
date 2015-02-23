@@ -1,41 +1,38 @@
-#Appserver im Docker-Container
+#appserver.io in a docker container
 
-Basis-Container zum Betrieb des [Appservers](http://www.appserver.io) als Webserver.
+## Introduction
+Dockerfile to build appserver.io.
 
-##Voraussetzungen
-* Docker >= v1.1
-* (Mac) Boot2Docker 
+## Requirements
+- Docker version >= v1.3
+- GNU Linux Kernel version >= 3.8 on the host machine
 
-Wird Ubuntu 12.04 bzw. 14.04 als Host verwendet, sollten *nicht* die mitgelieferten Pakete, sondern das aktuelle Repository von Docker selbst verwendet werden. Docker stellt dazu ein eigenes Script zur Verfügung:
+## Issues
+For ubuntu users I suggest installing docker using docker's own package repository since the version of docker packaged in the ubuntu repositories are a little dated.
 
-    sudo apt-get purge docker.io
-    curl -s https://get.docker.io/ubuntu/ | sudo sh
-    sudo apt-get update
-    sudo apt-get install lxc-docker
-    
-Unter Fedora bzw. RHEL/CentOS kann es zu Problemen mit selinux kommen. Aus diesem Grund sollte möglichst selinux mittels ```setenforce 0``` deaktiviert werden. Allerdings wird dies von RedHat auf Produktivsystemen ausdrücklich *nicht* empfohlen.
+	sudo apt-get purge docker.io
+	curl -s https://get.docker.io/ubuntu/ | sudo sh
+	sudo apt-get update
+	sudo apt-get install lxc-docker
 
-## Für Eilige... einfach los!
-Wer einfach nur einen Appserver-Container vom DockerHub ziehen und unverändert starten möchte, kann dies ganz wie folgt tun:
+## Installation
+The recommended method of installation is to pull the image from the docker index. These builds are performed by the Docker Trusted Build service.
+	
+	docker pull davidfeller/appserver.io:latest
 
-	docker run -d --name 'appserver.io' -p 9080:9080 davidfeller/appserver.io
+Alternativly you can build the image locally.
 
-##<small>für alle anderen...</small> Installation und Bau des Containers
-Aktuell befinden sich noch keine fertigen Images im DockerHub, sodass ein eigenes Image gebaut werden muss
+	git clone https://github.com/appserver-io-dist/docker.git
+	cd docker
+	docker build -t "$USER/appserver.io" .
+	
+## Quickstart
+You can launch the image using the docker command line
+	
+	docker run -d --name='appserver.io' -p 9080:9080 -p 9443:9443 -v /var/www:/opt/appserver/webapps davidfeller/appserver.io:latest
+	
+or if you built your own image
 
-    git clone https://github.com/DavidFeller/docker-appserver.git
-    cd docker-appserver
-    docker build -t "$USER/appserver" .
-
-##Volumes und Ports
-Als DocumentRoot kann ein lokales Verzeichnis, z.B. ```/var/www``` in ```/opt/appserver/webapps``` eingebunden werden. Zudem werden zu Wartungszwecken die Verzeichnisse ```/opt/appserver/etc``` und ```/opt/appserver/var``` als Volumes deklariert, sodass sie später von anderen Docker-Container eingebunden und ggf. editiert werden können.
-
-Damit der Container von außen erreichbar ist, werden die Ports 9080 und 9443 "exposed".
-
-##Start des Containers
-Da Docker nur bedingt mit Upstart-Skripten umgehen kann, muss der Appserver beim Start des Containers mittels eines Bash-Skripts gestartet werden. Dazu wird beim Start des Containers die Datei ```start.sh``` eingebunden und ausgeführt.
-
-```docker run -d --name 'appserver' -p 9080:9080 -p 9443:9443 -v /var/www:/opt/appserver/webapps $USER/appserver```
-
-##Demo
-[http://docker.browse-technology.com:9081/](http://docker.browse-technology.com:9081/)
+	docker run -d --name='appserver.io' -p 9080:9080 -p 9443:9443 -v /var/www:/opt/appserver/webapps $USER/appserver.io
+	
+In both cases we assume that you want to use `/var/www` as document root.
