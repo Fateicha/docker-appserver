@@ -11,8 +11,8 @@
         <param name="conf.dir" type="string">/etc/appserver</param>
         <param name="confd.dir" type="string">/etc/appserver/conf.d</param>
         -->
-        <param name="user" type="string">www-data</param>
-        <param name="group" type="string">www-data</param>
+        <param name="user" type="string">root</param>
+        <param name="group" type="string">root</param>
         <param name="umask" type="string">0002</param>
     </params>
 
@@ -36,7 +36,7 @@
 
             <host
                     name="localhost"
-                    appBase="/webapps"
+                    appBase="/data/www"
                     serverAdmin="info@appserver.io"
                     serverSoftware="appserver/1.0.0-rc2.33 (darwin) PHP/5.3.15" />
 
@@ -60,7 +60,7 @@
                         <param name="workerNumber" type="integer">64</param>
                         <param name="workerAcceptMin" type="integer">3</param>
                         <param name="workerAcceptMax" type="integer">8</param>
-                        <param name="documentRoot" type="string">webapps</param>
+                        <param name="documentRoot" type="string">data/www</param>
                         <param name="directoryIndex" type="string">index.pc</param>
                         <param name="keepAliveMax" type="integer">64</param>
                         <param name="keepAliveTimeout" type="integer">5</param>
@@ -189,7 +189,7 @@
                         <param name="workerNumber" type="integer">64</param>
                         <param name="workerAcceptMin" type="integer">3</param>
                         <param name="workerAcceptMax" type="integer">8</param>
-                        <param name="documentRoot" type="string">webapps</param>
+                        <param name="documentRoot" type="string">data/www</param>
                         <param name="directoryIndex" type="string">index.do index.php index.html index.htm</param>
                         <param name="keepAliveMax" type="integer">64</param>
                         <param name="keepAliveTimeout" type="integer">5</param>
@@ -291,7 +291,7 @@
                         <param name="port" type="integer">9443</param>
                         <param name="certPath" type="string">etc/appserver/server.pem</param>
                         <param name="passphrase" type="string"></param>
-                        <param name="documentRoot" type="string">webapps</param>
+                        <param name="documentRoot" type="string">data/www</param>
                         <param name="directoryIndex" type="string">index.do index.php index.html index.htm</param>
                         <param name="keepAliveMax" type="integer">64</param>
                         <param name="keepAliveTimeout" type="integer">5</param>

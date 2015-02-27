@@ -11,7 +11,8 @@ RUN apt-get -y update \
 	&& apt-get install -y appserver-dist \
 	&& rm -rf /var/lib/apt/lists/*
 
-VOLUME ["/opt/appserver/etc", "/opt/appserver/var", "/opt/appserver/webapps"]
+RUN mkdir -p /data
+VOLUME ["/opt/appserver/etc", "/opt/appserver/var", "/data"]
 
 COPY scripts/start.sh /start.sh
 RUN rm /opt/appserver/etc/appserver/appserver.xml
